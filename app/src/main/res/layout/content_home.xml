@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,5 +7,28 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="me.developeralfa.tastytomatoes.Home"
     tools:showIn="@layout/app_bar_home">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            class="me.developeralfa.tastytomatoes.list"
+            android:id="@+id/list1"/>
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            class="me.developeralfa.tastytomatoes.list"
+            android:id="@+id/list2"/>
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            class="me.developeralfa.tastytomatoes.list"
+            android:id="@+id/list3"/>
+    </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.NestedScrollView>
