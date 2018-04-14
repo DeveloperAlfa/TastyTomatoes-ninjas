@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login2);
         callbackManager = CallbackManager.Factory.create();
         final SharedPreferences sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
-        if(sharedPreferences.contains("login")) loggedIn = true;
+        if(sharedPreferences.contains("login")) loggedIn = sharedPreferences.getBoolean("login",false);
         if(loggedIn) {
             startActivity(new Intent(this,Home.class));
             finish();
@@ -57,7 +58,9 @@ public class Login extends AppCompatActivity {
                                             name = response.getJSONObject().getString("name");
                                             User user = new User(response.getJSONObject().getInt("id"),name);
                                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                                           editor.putString("login",name);
+                                           editor.putBoolean("login",true);
+                                           editor.putString("name",name);
+                                           editor.putInt("id",response.getJSONObject().getInt("id"));
                                            editor.commit();
                                         } catch (JSONException e) {
                                             e.printStackTrace();
@@ -87,6 +90,10 @@ public class Login extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void guest(View view) {
+        startActivity(new Intent(Login.this,Home.class));
     }
 }
 

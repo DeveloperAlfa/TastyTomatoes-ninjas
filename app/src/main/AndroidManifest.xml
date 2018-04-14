@@ -46,8 +46,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Home"
-            android:label=""
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
